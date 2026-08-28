@@ -1,0 +1,17 @@
+# Copy this to terraform.tfvars and fill in values.
+#   cp terraform.tfvars.example terraform.tfvars
+#
+# The alarms_sns_topic_arn comes from the data-monitoring stack output:
+#   terraform -chdir=../data-monitoring output -raw alarms_sns_topic_arn
+
+region  = "us-east-1"
+project = "cross-stack-demo"
+
+agent_space_name = "cross-stack-failure-demo"
+
+# Required — get from data-monitoring stack output
+alarms_sns_topic_arn = "arn:aws:sns:us-east-1:123456789012:cross-stack-demo-alarms"
+
+# SSM parameter paths (defaults are fine unless you need to customize)
+# webhook_url_param_name = "/devops-agent/cross-stack-demo/webhook-url"
+# hmac_secret_param_name = "/devops-agent/cross-stack-demo/hmac-secret"

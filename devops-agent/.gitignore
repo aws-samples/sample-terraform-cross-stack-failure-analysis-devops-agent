@@ -1,0 +1,12 @@
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfplan
+.terraform.lock.hcl
+
+# Lambda build artifacts
+build/
+
+# Local tfvars (may contain account-specific values)
+terraform.tfvars
