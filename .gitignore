@@ -1,0 +1,21 @@
+# macOS
+.DS_Store
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfplan
+.terraform.lock.hcl
+
+# Lambda build artifacts
+build/
+
+# Local tfvars (may contain account-specific values)
+terraform.tfvars
+
+# Kiro local files (self-check output references internal portal URLs)
+.kiro/
+
+# Local PCSR review response drafts (contain reviewer PII / internal references)
+PCSR_*_response.md

@@ -1,0 +1,22 @@
+# Copy this to terraform.tfvars and fill in values for your environment.
+#   cp terraform.tfvars.example terraform.tfvars
+#
+# Tips:
+# - Pick a vpc_cidr that does not overlap with any existing VPC, on-prem range,
+#   or peering you may add later. /16 gives plenty of room.
+# - Use 2 AZs minimum. Lambda in-VPC requires multi-AZ for HA.
+# - Verify the AZs exist in your account/region:
+#     aws ec2 describe-availability-zones --region us-east-1 \
+#       --query "AvailabilityZones[].ZoneName" --output text
+# - Subnet CIDRs must each be inside vpc_cidr and not overlap each other.
+
+region  = "us-east-1"
+project = "cross-stack-demo"
+
+vpc_cidr             = "10.42.0.0/16"
+private_subnet_cidrs = ["10.42.1.0/24", "10.42.2.0/24"]
+azs                  = ["us-east-1a", "us-east-1b"]
+
+# Leave false for normal deploys. The introduce-failure script flips this to true
+# at apply time to simulate the security-audit breaking change.
+restrict_egress = false
